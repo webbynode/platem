@@ -6,7 +6,14 @@ module Platem
     attr_accessor :template_root
   end
 
-  def template_root(root)
-    Platem.template_root = root
+  module ClassMethods
+    def template_root(root)
+      Platem.template_root = root
+    end
   end
+
+  def self.included(klass)
+    klass.extend ClassMethods
+  end
+
 end

@@ -17,7 +17,9 @@ describe Platem do
 
   describe '#template_root' do
     it "sets the template root" do
-      subject.template_root '/etc/xyz'
+      class Subject
+        template_root '/etc/xyz'
+      end
       Platem.template_root.should == '/etc/xyz'
     end
   end
