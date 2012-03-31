@@ -9,10 +9,6 @@ module Platem
       end
     end
 
-    def template(template)
-      File.expand_path("../../../templates/#{template}", __FILE__)
-    end
-
     def compile_template(template, vars)
       contents = File.read(template(template))
       struct = ErbBinding.new(vars)
@@ -30,7 +26,7 @@ module Platem
     end
     
     def template(template)
-      File.expand_path("../../../templates/#{template}", __FILE__)
+      File.join(Platem.template_root, template)
     end
 
     def display_template(template)

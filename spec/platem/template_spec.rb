@@ -1,16 +1,38 @@
-require 'platem/template'
+require_relative '../../lib/platem'
 
 class Subject
+  include Platem
   include Platem::Template
+end
+
+describe Platem do
+  subject { Subject.new }
+
+  describe '.template_root=' do
+    it "sets the template_root" do
+      Platem.template_root = '/etc/templates'
+      Platem.template_root.should == '/etc/templates'
+    end
+  end
+
+  describe '#template_root' do
+    it "sets the template root" do
+      subject.template_root '/etc/xyz'
+      Platem.template_root.should == '/etc/xyz'
+    end
+  end
 end
 
 describe Platem::Template do
   subject { Subject.new }
 
+  before(:each) do
+    Platem.template_root = '/etc/templates'
+  end
+
   describe '#template' do
     it "returns the path to a template" do
-      File.should_receive(:expand_path).with('../../../templates/path/template', anything).and_return('something')
-      subject.template('path/template').should == "something"
+      subject.template('path/template').should == "/etc/templates/path/template"
     end
   end
 
@@ -72,7 +94,7 @@ describe Platem::Template do
   
   describe '#read_template' do
     it "reads the contents of a template to a string" do
-      file = File.expand_path("../../../templates/template", __FILE__)
+      file = subject.template('template')
       File.should_receive(:read).with(file)
       subject.read_template 'template'
     end

@@ -1,5 +1,12 @@
 require "platem/version"
+require "platem/template"
 
 module Platem
-  # Your code goes here...
+  class << self
+    attr_accessor :template_root
+  end
+
+  def template_root(root)
+    Platem.template_root = root
+  end
 end
