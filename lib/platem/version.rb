@@ -1,3 +1,3 @@
-module Plate
+module Platem
   VERSION = "0.0.1"
 end

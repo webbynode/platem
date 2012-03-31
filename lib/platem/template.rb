@@ -1,7 +1,7 @@
 require 'ostruct'
 require 'tempfile'
 
-module Plate
+module Platem
   module Template
     class ErbBinding < OpenStruct
       def get_binding

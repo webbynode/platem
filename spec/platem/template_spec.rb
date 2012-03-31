@@ -1,10 +1,10 @@
-require 'plate/template'
+require 'platem/template'
 
 class Subject
-  include Plate::Template
+  include Platem::Template
 end
 
-describe Plate::Template do
+describe Platem::Template do
   subject { Subject.new }
 
   describe '#template' do
