@@ -14,6 +14,7 @@ module Platem
 
   def self.included(klass)
     klass.extend ClassMethods
+    klass.send(:include, Platem::Template)
   end
 
 end

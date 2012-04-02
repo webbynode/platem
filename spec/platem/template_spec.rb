@@ -2,7 +2,6 @@ require_relative '../../lib/platem'
 
 class Subject
   include Platem
-  include Platem::Template
 end
 
 describe Platem do
