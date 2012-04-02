@@ -31,15 +31,15 @@ describe Platem::Template do
     Platem.template_root = '/etc/templates'
   end
 
-  describe '#template' do
+  describe '#template_file' do
     it "returns the path to a template" do
-      subject.template('path/template').should == "/etc/templates/path/template"
+      subject.template_file('path/template').should == "/etc/templates/path/template"
     end
   end
 
   describe '#compile_template' do
     it "returns the string for the template" do
-      template = subject.template('vhosts/nginx/rails3.erb')
+      template = subject.template_file('vhosts/nginx/rails3.erb')
       File.should_receive(:read).with(template).and_return('abcdef <%= app.name %> <%= app.path %>')
 
       app = stub(
@@ -95,7 +95,7 @@ describe Platem::Template do
   
   describe '#read_template' do
     it "reads the contents of a template to a string" do
-      file = subject.template('template')
+      file = subject.template_file('template')
       File.should_receive(:read).with(file)
       subject.read_template 'template'
     end

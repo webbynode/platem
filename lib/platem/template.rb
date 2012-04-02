@@ -10,7 +10,7 @@ module Platem
     end
 
     def compile_template(template, vars)
-      contents = File.read(template(template))
+      contents = File.read(template_file(template))
       struct = ErbBinding.new(vars)
       ERB.new(contents).result(struct.send(:get_binding))
     end
@@ -25,7 +25,7 @@ module Platem
       end
     end
     
-    def template(template)
+    def template_file(template)
       File.join(Platem.template_root, template)
     end
 
@@ -34,7 +34,7 @@ module Platem
     end
     
     def read_template(template)
-      File.read template(template)
+      File.read template_file(template)
     end
   end
 end
