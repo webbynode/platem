@@ -24,7 +24,7 @@ describe Platem do
   end
 end
 
-describe Platem::Template do
+describe Platem::Templates do
   subject { Subject.new }
 
   before(:each) do

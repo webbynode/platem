@@ -1,5 +1,5 @@
 require "platem/version"
-require "platem/template"
+require "platem/templates"
 
 module Platem
   class << self
@@ -14,7 +14,7 @@ module Platem
 
   def self.included(klass)
     klass.extend ClassMethods
-    klass.send(:include, Platem::Template)
+    klass.send(:include, Platem::Templates)
   end
 
 end
